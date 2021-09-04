@@ -9,15 +9,15 @@ node {
     tag = readFile('commit-id').replace("\n", "").replace("\r", "")
     tag = "latest"
     appName = "hello-kenzan"
-    //registryHost = "127.0.0.1:30400/"
-    registryHost = "gcr.io/robotics-222114/hello-kenzan"
+    registryHost = "127.0.0.1:30400/"
+    //registryHost = "gcr.io/robotics-222114/hello-kenzan"
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
     env.BUILD_TAG=tag
-    stage('Initialize') {
-        def dockerHome = tool 'myDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
+    //stage('Initialize') {
+    //    def dockerHome = tool 'myDocker'
+    //    env.PATH = "${dockerHome}/bin:${env.PATH}"
+    //}
     stage "Build"
     
         sh "docker build -t ${imageName} -f applications/hello-kenzan/Dockerfile applications/hello-kenzan"
