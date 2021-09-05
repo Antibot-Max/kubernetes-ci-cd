@@ -28,7 +28,6 @@ node {
 
     stage "Deploy"
         sh "kubectl config current-context"
-        sh "kubectl apply -f applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig'
-        //kubernetesDeploy configs: "applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig'
+        kubernetesDeploy configs: "applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig'
 
 }
